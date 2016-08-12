@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/4ec043b45149ecc525f0f5cb447ebd3eec30d552/node-schedule/node-schedule.d.ts",
+    "raw": "registry:dt/node-schedule#1.1.0+20160521153413",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/4ec043b45149ecc525f0f5cb447ebd3eec30d552/node-schedule/node-schedule.d.ts"
+  }
+}
