@@ -1,0 +1,11 @@
+﻿extends layout
+
+block content
+  form(method="post")
+    div
+      lable 标题
+      input(type='text' name='title')
+    div
+      lable 内容
+      textarea(rows="20" cols="100" name='content')
+    input(type='submit' value='发布') 

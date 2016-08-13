@@ -1,9 +1,38 @@
 ﻿extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
   div
-    button blog
-    button about
-    button like
+    nav
+      span 
+        a(href='/')
+          p HOME
+      if(!user)
+        span 
+          a(href='/login')
+            p Login
+        span 
+          a(href='/registe')
+            p Registe
+      else
+        span 
+          a(href='/post')
+            p Post
+        span 
+          a(href='/logout')
+            p logout
+      if(success)
+        div= success
+      else
+        div= error
+  div
+    if(blogs)
+      each blog, index in blogs
+        p
+          h3= blog.title
+        span
+          p 作者
+          a= blog.name
+        span
+          p 日期
+          a= blog.time.minute
+        p= blog.content
