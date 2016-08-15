@@ -3,18 +3,19 @@ var User = require('../models/user.js');
 var Post = require('../models/post.js');
 module.exports = function (app) {
     app.get('/', function (req, res) {
-        Post.get(req.session.user.name, function (err, blogs) {
-            if (err) {
-                blogs = [];
-            }
-            res.render('index', {
-                title: '主页',
-                user: req.session.user,
-                blogs: blogs,
-                success: req.flash('success').toString(),
-                error: req.flash('error').toString()
-            });
-        })
+        console.log("---------------------");
+        Post.get(false, function (err, blogs) {
+            if (err || !req.session.user) {
+                            blogs = [];
+                        }
+                        res.render('index', {
+                            title: '主页',
+                            user: req.session.user,
+                            blogs: blogs,
+                            success: req.flash('success').toString(),
+                            error: req.flash('error').toString()
+                        });
+                    });
     });
 
     app.get('/login', function (req, res) {

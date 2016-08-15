@@ -1,11 +1,10 @@
 ﻿extends layout
 
 block content
-  div
-    nav
-      span 
-        a(href='/')
-          p HOME
+  section
+    div(style='display:inline')
+      header 
+        a(href='/') <h1>HOME</h1>
       if(!user)
         span 
           a(href='/login')
@@ -20,19 +19,15 @@ block content
         span 
           a(href='/logout')
             p logout
-      if(success)
-        div= success
-      else
-        div= error
-  div
+        if(success)
+          div= success
+        else
+          div= error
+  article
     if(blogs)
       each blog, index in blogs
-        p
-          h3= blog.title
         span
-          p 作者
-          a= blog.name
+          p 作者: #{blog.name}
         span
-          p 日期
-          a= blog.time.minute
-        p= blog.content
+          p 日期：#{blog.time.minute}
+        textarea(rows="5",clos="20") #{blog.content}
