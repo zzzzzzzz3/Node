@@ -1,33 +1,37 @@
 ﻿extends layout
 
 block content
-  section
-    div(style='display:inline')
-      header 
-        a(href='/') <h1>HOME</h1>
-      if(!user)
-        span 
-          a(href='/login')
-            p Login
-        span 
-          a(href='/registe')
-            p Registe
-      else
-        span 
-          a(href='/post')
-            p Post
-        span 
-          a(href='/logout')
-            p logout
-        if(success)
-          div= success
+  nav.navbar.navbar-default
+    div.container-fluid.center-block
+      header.navbar-header 
+        a.navbar-brand(href='/') HOME
+      ul.nav.navbar-nav
+        if(!user)
+          li.btn-default-navbar-btn 
+            a(href='/login') Login
+          li.btn-default-navbar-btn 
+            a(href='/registe') Registe
         else
-          div= error
-  article
+          li.btn-default-navbar-btn 
+            a(href='/post') Post
+          li.btn-default-navbar-btn 
+            a(href='/logout') logout
+        form.navbar-form.navbar-right(role='search')
+          div.form-group
+            input.form-control(placeholder='Search')
+          button.btn.btn-default(type='submit') Submit
+  if(success)
+    div= success
+  else
+    div= error
+  div.container
+    div.jumbotron
     if(blogs)
       each blog, index in blogs
-        span
-          p 作者: #{blog.name}
-        span
-          p 日期：#{blog.time.minute}
-        textarea(rows="5",clos="20") #{blog.content}
+        div.panel.panel-default
+          div.panel-heading
+            p 作者: #{blog.name}
+          div.panel-body
+            p.lead #{blog.content}
+          div.panel-footer
+            p 日期: #{blog.time.minute}
