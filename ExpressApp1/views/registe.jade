@@ -1,14 +1,14 @@
 ﻿extends layout
 
 block content
-  form(method="post")
-    div
-      lable 用户
-      input(type='text' name='name')
-    div
-      lable 密码
-      input(type='password' name='password')
-    div
-      lable 确认密码
-      input(type='text' name='confirm')
-    input(type='submit' value='注册')
+  form.form-horizontal(method="post")
+    div.form-group
+      lable.col-sm-2.control-label 用户
+      input.form-control(type='text' name='name')
+    div.form-group
+      lable.col-sm-2.control-label 密码
+      input.form-control(type='password' name='password')
+    div.group
+      lable.col-sm-2.control-label 确认密码
+      input.form-control(type='text' name='confirm')
+    input.form-control(type='submit' value='注册')

@@ -1,24 +1,26 @@
 ﻿extends layout
 
 block content
-  nav.navbar.navbar-default
-    div.container-fluid.center-block
-      header.navbar-header 
-        a.navbar-brand(href='/') HOME
-      ul.nav.navbar-nav
-        if(!user)
-          li.btn-default-navbar-btn 
-            a(href='/login') Login
-          li.btn-default-navbar-btn 
-            a(href='/registe') Registe
-        else
-          li.btn-default-navbar-btn 
-            a(href='/post') Post
-          li.btn-default-navbar-btn 
-            a(href='/logout') logout
-        form.navbar-form.navbar-right(role='search')
-          div.form-group
-            input.form-control(placeholder='Search')
+  nav.navbar.navbar-default(style='background-color:#4fc3c7')
+    div.container-fluid
+      .center-block
+        header.navbar-header 
+          a.navbar-brand(href='/') HOME
+        ul.nav.navbar-nav
+          if(!user)
+            li.btn-default-navbar-btn 
+              a(href='/login') Login
+            li.btn-default-navbar-btn 
+              a(href='/registe') Registe
+          else
+            li.btn-default-navbar-btn 
+              a(href='/post') Post
+            li.btn-default-navbar-btn 
+              a(href='/logout') logout
+          li.btn-default-navbar-btn
+      form.navbar-form.navbar-right(role='search')
+        div.form-group
+          input.form-control(placeholder='Search')
           button.btn.btn-default(type='submit') Submit
   if(success)
     div= success
