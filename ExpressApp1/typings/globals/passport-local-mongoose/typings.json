@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/17765b050ae21b11066b5f6c9cf8d5726af69c8b/passport-local-mongoose/passport-local-mongoose.d.ts",
+    "raw": "registry:dt/passport-local-mongoose#4.0.0+20160809145231",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/17765b050ae21b11066b5f6c9cf8d5726af69c8b/passport-local-mongoose/passport-local-mongoose.d.ts"
+  }
+}

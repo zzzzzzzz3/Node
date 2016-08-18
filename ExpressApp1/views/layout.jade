@@ -4,10 +4,10 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/center.css') 
-  body
+  body(ng-app="myApp")
     div.page-header
       h1.text-center= title
     block content
-script(src='/javascript/jquery.js')
-script(src='/javascript/angular.min.js')
+script(src='/javascripts/jquery.js')
+script(src='/javascripts/angular.min.js')
 block scripts

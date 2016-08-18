@@ -120,6 +120,21 @@ module.exports = function (app) {
         req.flash('success', '登出成功!');
         res.redirect('/');
     });
+    app.post('/blog/remove', function (req, res) {
+        var blog = req.body.blog;
+        Post.remove(blog, function (err, blogs) {
+            if (err) {
+                return res.json({ error: err });
+            }
+            res.render('index', {
+                title: '主页',
+                user: req.session.user,
+                blogs: blogs,
+                success: req.flash('success').toString(),
+                error: req.flash('error').toString()
+            });
+        });
+    });
     function checkLogin(req, res) {
         if (!req.session.user) {
             req.flash('error', '未登录!');

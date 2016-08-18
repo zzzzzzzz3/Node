@@ -31,6 +31,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="public\controllers\blogController.js" />
+    <Compile Include="public\controllers\navController.js" />
     <Compile Include="models\db.js" />
     <Compile Include="models\post.js" />
     <Compile Include="models\user.js" />
@@ -49,7 +51,7 @@
   <ItemGroup>
     <Folder Include="bin\" />
     <Folder Include="models\" />
-    <Folder Include="controllers\" />
+    <Folder Include="public\controllers\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="public\javascripts\" />
@@ -68,6 +70,7 @@
     <Folder Include="typings\globals\jade\" />
     <Folder Include="typings\globals\mime\" />
     <Folder Include="typings\globals\mongodb\" />
+    <Folder Include="typings\globals\mongoose-paginate\" />
     <Folder Include="typings\globals\mongoose\" />
     <Folder Include="typings\globals\morgan\" />
     <Folder Include="typings\globals\multiparty\" />
@@ -75,6 +78,7 @@
     <Folder Include="typings\globals\node-uuid\" />
     <Folder Include="typings\globals\nodemailer\" />
     <Folder Include="typings\globals\node\" />
+    <Folder Include="typings\globals\passport-local-mongoose\" />
     <Folder Include="typings\globals\passport-local\" />
     <Folder Include="typings\globals\passport\" />
     <Folder Include="typings\globals\request\" />
@@ -106,6 +110,7 @@
     <TypeScriptCompile Include="typings\globals\jade\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\mime\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\mongodb\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\mongoose-paginate\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\mongoose\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\morgan\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\multiparty\index.d.ts" />
@@ -113,6 +118,7 @@
     <TypeScriptCompile Include="typings\globals\node-uuid\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\nodemailer\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\passport-local-mongoose\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\passport-local\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\passport\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\request\index.d.ts" />

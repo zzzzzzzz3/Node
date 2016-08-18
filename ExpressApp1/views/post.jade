@@ -1,11 +1,15 @@
 ﻿extends layout
 
 block content
-  form(method="post")
-    div
-      lable 标题
-      input(type='text' name='title')
-    div
-      lable 内容
-      textarea(rows="20" cols="100" name='content')
-    input(type='submit' value='发布') 
+  .container
+    .row
+      .col-md-6.col-md-offset-3
+        form.form(method="post")
+          div.form-group
+            lable.control-label 标题
+            input.form-control(type='text' name='title')
+          div.form-group
+            lable.control-label 内容
+            textarea.form-control(rows="20" name='content')
+          div.form-group
+            input.col-md-4(type='submit' value='发布') 

@@ -1,9 +1,8 @@
 ﻿extends layout
 
 block content
-  nav.navbar.navbar-default(style='background-color:#4fc3c7')
-    div.container-fluid
-      .center-block
+  nav.navbar.navbar-default(style='background-color:#4fc3c7' ng-controller="navController")
+    div.container
         header.navbar-header 
           a.navbar-brand(href='/') HOME
         ul.nav.navbar-nav
@@ -16,24 +15,56 @@ block content
             li.btn-default-navbar-btn 
               a(href='/post') Post
             li.btn-default-navbar-btn 
-              a(href='/logout') logout
+              a(href='/logout') Logout
           li.btn-default-navbar-btn
-      form.navbar-form.navbar-right(role='search')
-        div.form-group
-          input.form-control(placeholder='Search')
-          button.btn.btn-default(type='submit') Submit
+            a(href="#") About
+        form.navbar-form.navbar-right(role='search')
+          div.form-group
+            input.form-control(placeholder='Search')
+            button.btn.btn-default(type='submit') Submit
   if(success)
-    div= success
-  else
-    div= error
-  div.container
-    div.jumbotron
-    if(blogs)
-      each blog, index in blogs
-        div.panel.panel-default
-          div.panel-heading
-            p 作者: #{blog.name}
-          div.panel-body
-            p.lead #{blog.content}
-          div.panel-footer
-            p 日期: #{blog.time.minute}
+    div.col-md-12
+      .alert.alert-success(role="alert")
+        p.text-center= success
+  else if(error)
+    div.col-ma-12
+      .alert.alert-danger(role="alert")
+        p.text-center= error
+  .container(ng-controller="blogController")
+    .row
+      div.col-md-9.jumbotron
+        if(blogs.length>0)
+          each blog, index in blogs
+            div.panel.panel-default
+              div.panel-heading
+                 span
+                   p 作者: #{blog.name}
+                 span.pull-right
+                   button.glyphicon.glyphicon-remove(ng-click="removeBlog(blog)")
+              div.panel-body
+                p.lead #{blog.content}
+              div.panel-footer
+                p 日期: #{blog.time.minute}
+        else
+          p.text-center.lead 这楼主很懒，什么都没写。
+      div.col-md-3
+        .panel.panel-default
+          .panel-heading
+            p.text-center 分类
+          ul.panel-body.list-group
+            li.list-group-item 
+              a(href="#") Java
+            li.list-group-item 
+              a(href="#") Android
+            li.list-group-item 
+              a(href="#") nodejs
+            li.list-group-item 
+              a(href="#") javascript
+            li.list-group-item 
+              a(href="#") html&css
+  section
+    span.label.label-dafault
+      p.text-center(style='color: #607d8b') @copyright jack 2016.8.18
+block scripts
+  script(src="/controllers/blogController.js")
+  script(src="/controllers/navController.js")

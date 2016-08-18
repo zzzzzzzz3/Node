@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/0bb4aa560e9838fccc2a8bbac2d8b0f834e57e2c/mongoose-paginate/mongoose-paginate.d.ts",
+    "raw": "registry:dt/mongoose-paginate#5.0.0+20160809115913",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/0bb4aa560e9838fccc2a8bbac2d8b0f834e57e2c/mongoose-paginate/mongoose-paginate.d.ts"
+  }
+}
