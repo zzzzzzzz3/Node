@@ -40,7 +40,7 @@ block content
                  span
                    p 作者: #{blog.name}
                  span.pull-right
-                   button.glyphicon.glyphicon-remove(ng-click="removeBlog(blog)")
+                   button.glyphicon.glyphicon-remove(ng-click="removeBlog(blog._id)")
               div.panel-body
                 p.lead #{blog.content}
               div.panel-footer

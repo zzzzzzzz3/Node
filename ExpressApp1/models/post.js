@@ -78,7 +78,7 @@ Post.get = function (name,callback) {
         });
     });
 };
-Post.remove = function (blog, callback) {
+Post.remove = function (blog_id, callback) {
     mongodb.open(function (err, db) {
         if (err) { return callback(err); }
         db.collection(contents, function (err, collection) {
@@ -86,12 +86,12 @@ Post.remove = function (blog, callback) {
                 db.close();
                 return callback(err);
             }
-            collection.deleteOne({ _id: blog._id }).sort({ time: -1 }).toArray(function (err,docs) {
+            collection.remove({ _id: blog_id }, function (err, count) {
                 mongodb.close();
                 if (err) {
                     return callback(err);
                 }
-                callback(null, docs);
+                callback(null, count);
             });
         });
     });

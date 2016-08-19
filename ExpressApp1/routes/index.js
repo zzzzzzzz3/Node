@@ -121,18 +121,15 @@ module.exports = function (app) {
         res.redirect('/');
     });
     app.post('/blog/remove', function (req, res) {
-        var blog = req.body.blog;
-        Post.remove(blog, function (err, blogs) {
+        console.log("---------removing 001---------");
+        var blog_id = req.body.blog_id;
+        Post.remove(blog_id, function (err, count) {
             if (err) {
+                console.log("---------removing error in post---------");
                 return res.json({ error: err });
             }
-            res.render('index', {
-                title: '主页',
-                user: req.session.user,
-                blogs: blogs,
-                success: req.flash('success').toString(),
-                error: req.flash('error').toString()
-            });
+            console.log("---------removing end---------");
+            return res.json({ success: true })
         });
     });
     function checkLogin(req, res) {
