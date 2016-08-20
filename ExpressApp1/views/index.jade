@@ -30,6 +30,8 @@ block content
     div.col-ma-12
       .alert.alert-danger(role="alert")
         p.text-center= error
+  .alert.alert-success(role="alert" ng-if="delete")
+    p.text-center {{deletemsg}}
   .container(ng-controller="blogController")
     .row
       div.col-md-9.jumbotron
@@ -38,7 +40,9 @@ block content
             div.panel.panel-default
               div.panel-heading
                  span
-                   p 作者: #{blog.name}
+                   h3 #{blog.title}
+                     hr
+                     small 作者：#{blog.name}
                  span.pull-right
                    button.glyphicon.glyphicon-remove(ng-click="removeBlog(blog._id)")
               div.panel-body

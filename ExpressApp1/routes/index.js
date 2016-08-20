@@ -9,7 +9,7 @@ module.exports = function (app) {
                             blogs = [];
                         }
                         res.render('index', {
-                            title: '主页',
+                            title: 'Jack House',
                             user: req.session.user,
                             blogs: blogs,
                             success: req.flash('success').toString(),
@@ -19,7 +19,7 @@ module.exports = function (app) {
     });
 
     app.get('/login', function (req, res) {
-        //checkNotLogin(req, res);
+        checkNotLogin(req, res);
         res.render('login', {
             title: '登录',
             user: req.session.user,
@@ -28,7 +28,7 @@ module.exports = function (app) {
         });
     });
     app.get('/registe', function (req, res) {
-        //checkNotLogin(req, res);
+        checkNotLogin(req, res);
         res.render('registe', {
             title: '注册',
             user: req.session.user,
@@ -36,7 +36,7 @@ module.exports = function (app) {
             error: req.flash('error').toString() });
     });
     app.post('/login', function (req, res) {
-        //checkNotLogin(req, res);
+        checkNotLogin(req, res);
         var md5 = crypto.createHash('md5');
         var password = md5.update(req.body.password).digest('hex');
 
@@ -55,7 +55,7 @@ module.exports = function (app) {
         });
     });
     app.post('/registe', function (req, res) {
-        //checkNotLogin(req, res);
+        checkNotLogin(req, res);
         var name = req.body.name;
         var password = req.body.password;
         var password_re = req.body.confirm;
@@ -97,11 +97,11 @@ module.exports = function (app) {
         });
     });
     app.get('/post', function (req, res) {
-        //checkLogin(req, res);
+        checkLogin(req, res);
         res.render('post', { title:'发表'});
     });
     app.post('/post', function (req, res) {
-        //checkLogin(req, res);
+        checkLogin(req, res);
         var currentUser = req.session.user;
 
         var post = new Post(currentUser.name, req.body.title, req.body.content);
@@ -115,7 +115,7 @@ module.exports = function (app) {
         });
     })
     app.get('/logout', function (req, res) {
-        //checkLogin(req, res);
+        checkLogin(req, res);
         req.session.user = null;
         req.flash('success', '登出成功!');
         res.redirect('/');

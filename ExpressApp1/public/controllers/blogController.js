@@ -1,6 +1,9 @@
 ﻿var app = angular.module("myApp", []);
-app.controller("blogController", function ($scope,$http) {
+app.controller("blogController", function ($scope, $http) {
+    
     $scope.removeBlog = function (blog_id) {
+        $scope.delete = true;
+        $scope.deletemsg = "正在删除……";
         console.log("---------removing---------");
         $http(
             {
@@ -13,12 +16,14 @@ app.controller("blogController", function ($scope,$http) {
             console.log("---------removing finish---------");
             if (response.data.success) {
                 console.log("---------removing success---------");
-                window.location.href = "/";
+                $scope.deletemsg = "删除成功";
+                //window.location.href = "/";
             }
             window.location.href = "/";
             }, function (error) {
                 if (error) {
                     console.log("---------removing error---------");
+                    $scope.deletemsg = "删除失败";
                     return;
                 }
         });
