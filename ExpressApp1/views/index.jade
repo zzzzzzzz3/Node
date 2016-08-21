@@ -1,7 +1,7 @@
 ﻿extends layout
 
 block content
-  nav.navbar.navbar-default(style='background-color:#4fc3c7' ng-controller="navController")
+  nav.navbar.navbar-default(style='background-color:#4fc3c7')
     div.container
         header.navbar-header 
           a.navbar-brand(href='/') HOME
@@ -30,27 +30,24 @@ block content
     div.col-ma-12
       .alert.alert-danger(role="alert")
         p.text-center= error
-  .alert.alert-success(role="alert" ng-if="delete")
-    p.text-center {{deletemsg}}
-  .container(ng-controller="blogController")
+  .container(ng-controller="navController")
     .row
       div.col-md-9.jumbotron
-        if(blogs.length>0)
-          each blog, index in blogs
+          div(ng-repeat="blog in blogs")
             div.panel.panel-default
               div.panel-heading
                  span
-                   h3 #{blog.title}
+                   h3 {{blog.title}}
                      hr
-                     small 作者：#{blog.name}
+                     small 作者：{{blog.name}}
                  span.pull-right
-                   button.glyphicon.glyphicon-remove(ng-click="removeBlog(blog._id)")
+                   button.glyphicon.glyphicon-remove(ng-click="removeBlog(blog.id)")
               div.panel-body
-                p.lead #{blog.content}
+                p.lead {{blog.content}}
               div.panel-footer
-                p 日期: #{blog.time.minute}
-        else
-          p.text-center.lead 这楼主很懒，什么都没写。
+                p 日期: {{blog.time.minute}}
+          div(ng-if="blogs.length==0")
+            p.text-center.lead 这楼主很懒，什么都没写。
       div.col-md-3
         .panel.panel-default
           .panel-heading
@@ -70,5 +67,4 @@ block content
     span.label.label-dafault
       p.text-center(style='color: #607d8b') @copyright jack 2016.8.18
 block scripts
-  script(src="/controllers/blogController.js")
   script(src="/controllers/navController.js")

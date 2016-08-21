@@ -24,7 +24,8 @@ Post.prototype.save = function (callback) {
         name: this.name,
         time: time,
         title: this.title,
-        content: this.content
+        content: this.content,
+        id: date.getTime()
     };
 
     mongodb.open(function (err, db) {
@@ -81,12 +82,12 @@ Post.get = function (name,callback) {
 Post.remove = function (blog_id, callback) {
     mongodb.open(function (err, db) {
         if (err) { return callback(err); }
-        db.collection(contents, function (err, collection) {
+        db.collection("contents", function (err, collection) {
             if (err) {
                 db.close();
                 return callback(err);
             }
-            collection.remove({ _id: blog_id }, function (err, count) {
+            collection.remove({ id: blog_id }, function (err, count) {
                 mongodb.close();
                 if (err) {
                     return callback(err);

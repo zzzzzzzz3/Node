@@ -1,6 +1,15 @@
 ﻿var app = angular.module("myApp", []);
 app.controller("blogController", function ($scope, $http) {
     
+    $http({
+        method: 'GET',
+        url: '/blog',
+        headers: { "Accept": "application/json; odata=verbose" }
+    }).then(function (res) {
+        $scope.blogs = res.data;
+    }, function (res) {
+
+    });
     $scope.removeBlog = function (blog_id) {
         $scope.delete = true;
         $scope.deletemsg = "正在删除……";

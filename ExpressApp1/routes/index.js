@@ -3,21 +3,24 @@ var User = require('../models/user.js');
 var Post = require('../models/post.js');
 module.exports = function (app) {
     app.get('/', function (req, res) {
+        
+        res.render('index', {
+            title: 'Jack House',
+            user: req.session.user,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString()
+        });
+    });
+    app.get('/blog', function (req, res) {
         console.log("---------------------");
         Post.get(false, function (err, blogs) {
             if (err || !req.session.user) {
-                            blogs = [];
-                        }
-                        res.render('index', {
-                            title: 'Jack House',
-                            user: req.session.user,
-                            blogs: blogs,
-                            success: req.flash('success').toString(),
-                            error: req.flash('error').toString()
-                        });
-                    });
+                blogs = [];
+            }
+            console.log("----------------"+blogs);
+            res.json(blogs);
+        });
     });
-
     app.get('/login', function (req, res) {
         checkNotLogin(req, res);
         res.render('login', {
@@ -120,15 +123,12 @@ module.exports = function (app) {
         req.flash('success', '登出成功!');
         res.redirect('/');
     });
-    app.post('/blog/remove', function (req, res) {
-        console.log("---------removing 001---------");
-        var blog_id = req.body.blog_id;
+    app.post('/blogremove', function (req, res) {
+        var blog_id = req.body.id;
         Post.remove(blog_id, function (err, count) {
             if (err) {
-                console.log("---------removing error in post---------");
                 return res.json({ error: err });
             }
-            console.log("---------removing end---------");
             return res.json({ success: true })
         });
     });
