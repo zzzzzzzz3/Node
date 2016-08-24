@@ -31,11 +31,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
-    <Compile Include="public\controllers\blogController.js" />
     <Compile Include="public\controllers\navController.js" />
     <Compile Include="models\db.js" />
     <Compile Include="models\post.js" />
     <Compile Include="models\user.js" />
+    <Compile Include="public\javascripts\bootstrap.min.js" />
     <Compile Include="setting.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="bin\www" />

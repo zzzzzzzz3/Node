@@ -17,7 +17,26 @@ app.controller('navController', function ($scope, $http) {
             headers: { "Accept": "application/json;odata=verbose" },
             data: { id: blog_id }
         }).then(function (res) {
+            $scope.isSetting = false;
+            $('#mymodal').modal('hide');
             window.location.href = "/";
             }, function (res) { });
+    }
+    $scope.update = function (blog_id) {
+        $http({
+            method: "POST",
+            url: "/blogupdate",
+            headers: { "Accept": "application/json;odata=verbose" },
+            data: { id: blog_id }
+        }).then(function (res) {
+            $scope.isSetting = false;
+            $('#mymodal').modal('hide');
+            window.location.href = "/";
+        }, function (res) { });
+    }
+    $scope.setting = function (blog) {
+        $scope.isSetting = true;
+        $('#mymodal').modal('show');
+        $scope.setBolg = blog;
     }
 });

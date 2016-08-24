@@ -12,12 +12,12 @@ module.exports = function (app) {
         });
     });
     app.get('/blog', function (req, res) {
-        console.log("---------------------");
+        
         Post.get(false, function (err, blogs) {
             if (err || !req.session.user) {
                 blogs = [];
             }
-            console.log("----------------"+blogs);
+            
             res.json(blogs);
         });
     });

@@ -41,13 +41,27 @@ block content
                      hr
                      small 作者：{{blog.name}}
                  span.pull-right
-                   button.glyphicon.glyphicon-remove(ng-click="removeBlog(blog.id)")
+                   button.glyphicon.glyphicon-remove(ng-click="setting(blog)")
               div.panel-body
                 p.lead {{blog.content}}
               div.panel-footer
                 p 日期: {{blog.time.minute}}
           div(ng-if="blogs.length==0")
             p.text-center.lead 这楼主很懒，什么都没写。
+          div(ng-show="isSetting") {{setBolg.title}}hello
+          .modal.fade#mymodal
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                    span.sr-only Close
+                  h4.modal-title Modal title
+                .modal-body
+                  p One fine body…
+                .modal-footer
+                  button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                  button.btn.btn-primary(type='button') Save changes
       div.col-md-3
         .panel.panel-default
           .panel-heading
