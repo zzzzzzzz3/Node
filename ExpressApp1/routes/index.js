@@ -132,6 +132,17 @@ module.exports = function (app) {
             return res.json({ success: true })
         });
     });
+    app.post('/blogupdate', function (req, res) {
+        var blog_id = req.body.id;
+        var blog_title = req.body.title;
+        var blog_content = req.body.content;
+        Post.update(blog_id, blog_title, blog_content, function (err, blog) {
+            if (err) {
+                return res.json({ error: err });
+            }
+            return res.json({ success: true });
+        });
+    });
     function checkLogin(req, res) {
         if (!req.session.user) {
             req.flash('error', '未登录!');

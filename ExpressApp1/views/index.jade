@@ -48,7 +48,6 @@ block content
                 p 日期: {{blog.time.minute}}
           div(ng-if="blogs.length==0")
             p.text-center.lead 这楼主很懒，什么都没写。
-          div(ng-show="isSetting") {{setBolg.title}}hello
           .modal.fade#mymodal
             .modal-dialog(role='document')
               .modal-content
@@ -56,12 +55,21 @@ block content
                   button.close(type='button', data-dismiss='modal', aria-label='Close')
                     span(aria-hidden='true') ×
                     span.sr-only Close
-                  h4.modal-title Modal title
+                  h4.modal-title.text-center UPDATE
                 .modal-body
-                  p One fine body…
+                  .container
+                    .row
+                      .col-md-12
+                        form.form
+                          div.form-group
+                            lable.control-label 标题
+                            input.form-control(type='text' name='title' ng-model="title")
+                          div.form-group
+                            lable.control-label 内容
+                            textarea.form-control(rows="20" name='content' ng-model="content")
                 .modal-footer
-                  button.btn.btn-secondary(type='button', data-dismiss='modal') Close
-                  button.btn.btn-primary(type='button') Save changes
+                  button.btn.btn-secondary(type='button' ng-click="remove(setBlog.id)") 删除
+                  button.btn.btn-primary(type='button' ng-click="update(id,title,content)") 更新
       div.col-md-3
         .panel.panel-default
           .panel-heading

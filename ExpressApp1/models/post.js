@@ -97,3 +97,25 @@ Post.remove = function (blog_id, callback) {
         });
     });
 };
+Post.update = function (blog_id, blog_title, blog_content, callback) {
+    mongodb.open(function (err, db) {
+        if (err) { return callback(err); }
+        db.collection("contents", function (err, collection) {
+            if (err) {
+                db.close();
+                return callback(err);
+            }
+            collection.update({ id: blog_id },
+                { $set: { title: blog_title, content: blog_content } },
+                { safe: true, upsert: true },
+                function (err, blog) {
+                    mongodb.close();
+                    if (err) {
+                        return callback(err);
+                    }
+                    callback(null, blog);
+                }
+            );
+        });
+    });
+};

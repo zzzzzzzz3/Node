@@ -22,21 +22,22 @@ app.controller('navController', function ($scope, $http) {
             window.location.href = "/";
             }, function (res) { });
     }
-    $scope.update = function (blog_id) {
+    $scope.update = function (blog_id,blog_title,blog_content) {
         $http({
             method: "POST",
             url: "/blogupdate",
             headers: { "Accept": "application/json;odata=verbose" },
-            data: { id: blog_id }
+            data: { id: blog_id, title: blog_title, content: blog_content }
         }).then(function (res) {
-            $scope.isSetting = false;
+            $scope.SettingSuccess = res.data.success;
             $('#mymodal').modal('hide');
             window.location.href = "/";
         }, function (res) { });
     }
     $scope.setting = function (blog) {
-        $scope.isSetting = true;
         $('#mymodal').modal('show');
-        $scope.setBolg = blog;
+        $scope.id = blog.id;
+        $scope.title = blog.title;
+        $scope.content = blog.content;
     }
 });
