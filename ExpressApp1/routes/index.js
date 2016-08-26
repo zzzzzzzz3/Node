@@ -107,7 +107,7 @@ module.exports = function (app) {
         checkLogin(req, res);
         var currentUser = req.session.user;
 
-        var post = new Post(currentUser.name, req.body.title, req.body.content);
+        var post = new Post(currentUser.name, req.body.title, req.body.content,req.body.tag);
         post.save(function (err) {
             if (err) {
                 req.flash('error', err);

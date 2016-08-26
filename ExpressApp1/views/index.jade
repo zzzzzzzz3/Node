@@ -1,6 +1,7 @@
 ﻿extends layout
 
 block content
+  //Navigation
   nav.navbar.navbar-default(style='background-color:#4fc3c7')
     div.container
         header.navbar-header 
@@ -22,6 +23,7 @@ block content
           div.form-group
             input.form-control(placeholder='Search')
             button.btn.btn-default(type='submit') Submit
+  //Alert
   if(success)
     div.col-md-12
       .alert.alert-success(role="alert")
@@ -30,18 +32,21 @@ block content
     div.col-ma-12
       .alert.alert-danger(role="alert")
         p.text-center= error
+  //Blog
   .container(ng-controller="navController")
     .row
+      //BlogBody
       div.col-md-9.jumbotron
-          div(ng-repeat="blog in blogs")
+          div(ng-repeat="blog in blogs" ng-show="blog.show")
             div.panel.panel-default
               div.panel-heading
                  span
                    h3 {{blog.title}}
                      hr
                      small 作者：{{blog.name}}
+                   .label.label-pill.label-primary {{blog.tag?blog.tag:"日常"}}
                  span.pull-right
-                   button.glyphicon.glyphicon-remove(ng-click="setting(blog)")
+                   button.glyphicon.glyphicon-cog(ng-click="setting(blog)")
               div.panel-body
                 p.lead {{blog.content}}
               div.panel-footer
@@ -70,21 +75,25 @@ block content
                 .modal-footer
                   button.btn.btn-secondary(type='button' ng-click="remove(setBlog.id)") 删除
                   button.btn.btn-primary(type='button' ng-click="update(id,title,content)") 更新
+      //BlogTag
       div.col-md-3
         .panel.panel-default
           .panel-heading
             p.text-center 分类
           ul.panel-body.list-group
             li.list-group-item 
-              a(href="#") Java
+              a(href="#" ng-click='filter("all")') 全部
             li.list-group-item 
-              a(href="#") Android
+              a(href="#" ng-click='filter("Java")') Java
             li.list-group-item 
-              a(href="#") nodejs
+              a(href="#" ng-click='filter("Android")') Android
             li.list-group-item 
-              a(href="#") javascript
+              a(href="#" ng-click='filter("Nodejs")') Nodejs
             li.list-group-item 
-              a(href="#") html&css
+              a(href="#" ng-click='filter("javaScript")') javascript
+            li.list-group-item 
+              a(href="#" ng-click='filter("Html&css")') Html&css
+  //footer
   section
     span.label.label-dafault
       p.text-center(style='color: #607d8b') @copyright jack 2016.8.18

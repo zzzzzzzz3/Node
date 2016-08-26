@@ -6,9 +6,24 @@ app.controller('navController', function ($scope, $http) {
         headers: { "Accept": "application/json; odata=verbose" }
     }).then(function (res) {
         $scope.blogs = res.data;
+        $scope.filter("all");
     }, function (res) {
 
     });
+
+    $scope.filter = function (name) {
+        for (var i = 0; i < $scope.blogs.length; i++) {
+            if (name == "all") {
+                $scope.blogs[i].show = true;
+            } else {
+                if ($scope.blogs[i].tag == name) {
+                    $scope.blogs[i].show = true;
+                } else {
+                    $scope.blogs[i].show = false;
+                }
+            }
+        }
+    }
 
     $scope.removeBlog = function (blog_id) {
         $http({

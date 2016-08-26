@@ -1,9 +1,10 @@
 ﻿var mongodb = require('./db');
 
-function Post(name, title, content) {
+function Post(name, title, content,tag) {
     this.name = name;
     this.title = title;
     this.content = content;
+    this.tag = tag;
 }
 
 module.exports = Post;
@@ -25,6 +26,7 @@ Post.prototype.save = function (callback) {
         time: time,
         title: this.title,
         content: this.content,
+        tag: this.tag,
         id: date.getTime()
     };
 
